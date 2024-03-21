@@ -2,23 +2,24 @@ import random
 words = ["python", "programación", "computadora", "código", "desarrollo",
 "inteligencia"]
 secret_word = random.choice(words)
-max_attempts = 10
+max_attempts = 3
 guessed_letters = []
 print("¡Bienvenido al juego de adivinanzas!")
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
+print ("Tienes 3 errores permitidos");
 word_displayed = "_" * len(secret_word)
 print(f"Palabra: {word_displayed}")
-for i in range(max_attempts):
+while max_attempts>0:
     letter = input("Ingresa una letra: ").lower()
     if letter in guessed_letters:
-       print("Ya has intentado con esa letra. Intenta con otra.")
-       continue
+        print("Ya has intentado con esa letra. Intenta con otra.")
+        continue
     guessed_letters.append(letter)
     if letter in secret_word and letter:
         print("¡Bien hecho! La letra está en la palabra.")
     elif letter not in secret_word and letter:
         print("Lo siento, la letra no está en la palabra.")
-        max_attempts-=1
+        max_attempts=max_attempts-1
     elif not letter:
         print ("Error no ha insertardo ninguna palabra")
     letters = []
